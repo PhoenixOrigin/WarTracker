@@ -37,4 +37,9 @@ then, the war will be sent to http://localhost:8080/war. Data will be sent in th
   "killed": "boolean"
 }
 ```
+with the headers
+```
+X-Minecraft-Username: String
+X-Minecraft-UUID: String
+```
 You can do with that data as you will
