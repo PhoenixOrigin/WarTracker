@@ -11,7 +11,7 @@
     "repo": "https://github.com/PhoenixOrigin/WarTracker"
   },
   "license": "All-Rights-Reserved",
-  "icon": "assets/wartracker/icon.png",
+  "icon": "",
   "environment": "*",
   "entrypoints": {
     "client": [
