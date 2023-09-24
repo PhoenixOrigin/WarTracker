@@ -35,6 +35,9 @@ public class WarTrackerClient implements ClientModInitializer {
             activeWar.killed();
             activeWar.end(warBoss);
             warBoss = null;
+        } else if(message.contains(Text.literal("- Captured"))){
+            activeWar.end(warBoss);
+            warBoss = null;
         }
     }
 
