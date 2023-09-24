@@ -39,7 +39,7 @@ public class WarTrackerClient implements ClientModInitializer {
         String username = client.player.getName().getString();
         String uuid = client.player.getUuidAsString();
 
-        String url = config.get("url");
+        String url = config.get("url") + "/war";
 
         HttpRequest request = HttpRequest.newBuilder(URI.create(url))
                 .header("X-Minecraft-Username", username)
