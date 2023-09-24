@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "wartracker",
+  "version": "${version}",
+
+  "name": "WarTracker",
+  "description": "A simple war tracking mod",
+  "authors": [],
+  "contact": {},
+
+  "license": "All-Rights-Reserved",
+  "icon": "assets/wartracker/icon.png",
+
+  "environment": "*",
+  "entrypoints": {},
+
+      "mixins": [
+        "wartracker.mixins.json"
+      ],
+
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "${minecraft_version}"
+  }
+}
