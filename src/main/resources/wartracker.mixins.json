@@ -6,6 +6,8 @@
   "mixins": [
   ],
   "client": [
+    "BossBarMixin",
+    "ChatHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

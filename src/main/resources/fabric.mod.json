@@ -2,22 +2,28 @@
   "schemaVersion": 1,
   "id": "wartracker",
   "version": "${version}",
-
   "name": "WarTracker",
   "description": "A simple war tracking mod",
-  "authors": [],
-  "contact": {},
-
+  "authors": [
+    "PhoenixOrigin"
+  ],
+  "contact": {
+    "repo": "https://github.com/PhoenixOrigin/WarTracker"
+  },
   "license": "All-Rights-Reserved",
   "icon": "assets/wartracker/icon.png",
-
   "environment": "*",
-  "entrypoints": {},
-
-      "mixins": [
-        "wartracker.mixins.json"
-      ],
-
+  "entrypoints": {
+    "client": [
+      "net.phoenix.wartracker.client.WarTrackerClient"
+    ],
+    "main": [
+      "net.phoenix.wartracker.WarTracker"
+    ]
+  },
+  "mixins": [
+    "wartracker.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=${loader_version}",
     "minecraft": "${minecraft_version}"
