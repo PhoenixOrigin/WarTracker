@@ -1,6 +1,5 @@
 package net.phoenix.wartracker.mixin;
 
-import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
 import net.minecraft.client.network.message.MessageHandler;
 import net.minecraft.text.Text;
 import net.phoenix.wartracker.client.WarTrackerClient;

@@ -6,7 +6,6 @@ import net.minecraft.entity.boss.BossBar;
 import net.minecraft.text.Text;
 import net.phoenix.wartracker.containers.Config;
 import net.phoenix.wartracker.containers.War;
-import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -21,21 +20,13 @@ public class WarTrackerClient implements ClientModInitializer {
     public static BossBar warBoss = null;
     public static Config config = null;
 
-    /**
-     * Runs the mod initializer on the client environment.
-     */
-    @Override
-    public void onInitializeClient() {
-        config = Config.of("phoenix/wartracker").request();
-    }
-
-    public static void onGameMessage(Text message, boolean overlay){
+    public static void onGameMessage(Text message, boolean overlay) {
         if (overlay) return;
-        if(message.contains(Text.literal("You have been killed")) && activeWar != null){
+        if (message.contains(Text.literal("You have been killed")) && activeWar != null) {
             activeWar.killed();
             activeWar.end(warBoss);
             warBoss = null;
-        } else if(message.contains(Text.literal("- Captured"))){
+        } else if (message.contains(Text.literal("- Captured"))) {
             activeWar.end(warBoss);
             warBoss = null;
         }
@@ -59,12 +50,20 @@ public class WarTrackerClient implements ClientModInitializer {
         HttpClient httpClient = HttpClient.newHttpClient();
         httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                 .thenAcceptAsync((response) -> {
-                    if(response.statusCode() != 200){
+                    if (response.statusCode() != 200) {
                         client.execute(() -> {
-                            client.player.sendMessage(Text.literal("HTTP request was not successful. Please report this error with chat logs."));
+                                    client.player.sendMessage(Text.literal("HTTP request was not successful. Please report this error with chat logs."));
                                 }
                         );
                     }
                 });
+    }
+
+    /**
+     * Runs the mod initializer on the client environment.
+     */
+    @Override
+    public void onInitializeClient() {
+        config = Config.of("phoenix/wartracker").request();
     }
 }

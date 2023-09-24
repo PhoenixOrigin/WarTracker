@@ -8,6 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Box;
 import net.phoenix.wartracker.client.WarTrackerClient;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -17,9 +18,9 @@ public class War {
     private List<String> warMembersUUID = new ArrayList<>();
     private String territoryName = "";
     private String territoryOwner = "";
-    private TerritoryDefenses start;
+    private final TerritoryDefenses start;
     private TerritoryDefenses end;
-    private long startTime;
+    private final long startTime;
     private boolean killed = false;
 
     public War(List<String> warMembersUUID, String territoryName, String territoryOwner, TerritoryDefenses start, long startTime) {
@@ -44,7 +45,7 @@ public class War {
             ), playerEntity -> playerEntity != null && playerEntity.getName().getString().matches("[A-Za-z_0-9]+"));
         }
         List<String> warMembersUUID = new ArrayList<>();
-        for(PlayerEntity entity : newPlayers){
+        for (PlayerEntity entity : newPlayers) {
             warMembersUUID.add(entity.getUuidAsString());
         }
 
@@ -61,7 +62,7 @@ public class War {
                 Float.parseFloat(pattern.group(7))
         );
 
-        Long startTime = System.currentTimeMillis();
+        long startTime = Instant.now().toEpochMilli();
 
         return new War(
                 warMembersUUID,
@@ -85,11 +86,11 @@ public class War {
         WarTrackerClient.sendWar();
     }
 
-    public void killed(){
+    public void killed() {
         this.killed = true;
     }
 
-    public String toJson(){
+    public String toJson() {
         return new Gson().toJson(this);
     }
 
