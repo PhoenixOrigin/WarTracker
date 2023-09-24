@@ -2,13 +2,15 @@
 A very simple mod that allows you to track wars and post to an API
 
 # How to use
-- Host a POST api that takes this data and stores it locally (will be making one soon)
+- Host a POST api that takes this data and stores it locally
 - modify the config (.minecraft/config/phoenix/wartracker.yml) with the content
 -     url=YourAPIUrlHere
 - Put the mod in your mod folder
 - Wars should be tracked now
 
 # Hosting your own API
+
+You can either host your own custom-made API or use mine. If you want to use mine, follow the instructions on https://github.com/PhoenixOrigin/WarTrackerServer. If you wanna use your own, read the following and make your own.
 The mod will send the data to the url in config + /war. For example, if the config looks like this:
 ```
 url=http://localhost:8080
