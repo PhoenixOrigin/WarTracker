@@ -22,11 +22,11 @@ public class WarTrackerClient implements ClientModInitializer {
 
     public static void onGameMessage(Text message, boolean overlay) {
         if (overlay) return;
-        if (message.contains(Text.literal("You have been killed")) && activeWar != null) {
+        if (message.toString().strip().startsWith("§6You have been killed") && activeWar != null) {
             activeWar.killed();
             activeWar.end(warBoss);
             warBoss = null;
-        } else if (message.contains(Text.literal("- Captured"))) {
+        } else if (message.toString().strip().startsWith("- Captured")) {
             activeWar.end(warBoss);
             warBoss = null;
         }
